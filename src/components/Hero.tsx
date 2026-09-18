@@ -5,9 +5,6 @@ import { hero } from '../content/site';
 export default function Hero() {
   return (
     <section id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden">
-      {/* ember glow behind each brain */}
-      <div className="pointer-events-none absolute left-[22%] top-[40%] h-[64vmin] w-[64vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,200,150,0.14)_0%,rgba(255,122,26,0.06)_40%,transparent_70%)] blur-2xl max-md:left-1/2 max-md:top-[20%]" aria-hidden="true" />
-      <div className="pointer-events-none absolute left-[78%] top-[40%] h-[64vmin] w-[64vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,122,26,0.22)_0%,rgba(217,82,14,0.08)_40%,transparent_70%)] blur-2xl max-md:left-1/2 max-md:top-[44%]" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(10,8,7,0.4)_80%,rgba(10,8,7,0.85)_100%)]" aria-hidden="true" />
 
       <Nav />

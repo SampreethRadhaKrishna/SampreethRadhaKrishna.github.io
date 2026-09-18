@@ -75,7 +75,8 @@ const vert = /* glsl */ `
     // the core spins about its own axis, and that axis is tipped diagonally in the chip plane
     // ...and the whole tilted assembly turns slowly about the axis perpendicular to the board
     vec3 destLocal = aCore > 0.5 ? uChip + rotZ(rotX(rotZ(rotY(aDest, uTime * 0.42), -0.62), 0.35), uTime * 0.16) : aDest;
-    vec3 dest = rotY(destLocal, uDestTilt) + uDestOffset;
+    // the board sways so its layers read as depth
+    vec3 dest = rotY(rotX(destLocal, 0.05 * sin(uTime * 0.27)), uDestTilt + 0.07 * sin(uTime * 0.19)) + uDestOffset;
     // data cloud, rebuilt every frame between wherever the two brains are, then drifting
     float w = uTime * 0.5 + aSeed * 6.2831;
     vec3 span = uDestOffset - uHomeOffset;
@@ -118,6 +119,8 @@ const vert = /* glsl */ `
         // a second, dimmer pulse behind the first
         float head2 = fract(head + 0.5);
         pulse += smoothstep(0.06, 0.0, abs(aT - head2)) * 0.35;
+        // the pulse rides just above the copper
+        if (aCore < 0.5) p += rotY(rotX(vec3(0.0, 0.0, pulse * 0.07), 0.05 * sin(uTime * 0.27)), uDestTilt + 0.07 * sin(uTime * 0.19));
       }
       bright = min(1.3, aBrightDest * (aCore > 0.5 ? 1.25 : 1.15) + pulse);
       alpha = 1.0 - smoothstep(0.92, 1.0, k);
@@ -178,6 +181,8 @@ const frag = /* glsl */ `
 
 export default function HeroCanvas({ onTelemetry, onReady }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
+  const glowHome = useRef<HTMLDivElement>(null);
+  const glowDest = useRef<HTMLDivElement>(null);
   const cbRef = useRef({ onTelemetry, onReady });
   cbRef.current = { onTelemetry, onReady };
 
@@ -367,6 +372,25 @@ export default function HeroCanvas({ onTelemetry, onReady }: Props) {
 
       renderer.render(scene, camera);
 
+      // keep the backlights under the brains wherever they are on the page
+      if (frames % 2 === 0) {
+        const sc = mat.uniforms.uScale.value as number;
+        const w = mount.clientWidth, h = mount.clientHeight;
+        const hh = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
+        const radiusPx = ((1.35 * sc) / hh) * (h / 2);
+        const place = (el: HTMLDivElement | null, off: THREE.Vector3, k: number) => {
+          if (!el) return;
+          const v = new THREE.Vector3(off.x * sc, off.y * sc, 0).project(camera);
+          const x = ((v.x + 1) / 2) * w, y = ((1 - v.y) / 2) * h;
+          const size = radiusPx * 2.4 * k;
+          el.style.transform = `translate(${x - size / 2}px, ${y - size / 2}px)`;
+          el.style.width = `${size}px`;
+          el.style.height = `${size}px`;
+        };
+        place(glowHome.current, mat.uniforms.uHomeOffset.value as THREE.Vector3, 1);
+        place(glowDest.current, mat.uniforms.uDestOffset.value as THREE.Vector3, 1.1);
+      }
+
       frames++;
       if (now - fpsAt > 500) { fps = Math.round((frames * 1000) / (now - fpsAt)); frames = 0; fpsAt = now; }
       if (!ready && robotLoaded && now - t0 > 80) { ready = true; cbRef.current.onReady?.(); }
@@ -397,5 +421,11 @@ export default function HeroCanvas({ onTelemetry, onReady }: Props) {
     };
   }, []);
 
-  return <div ref={mountRef} className="pointer-events-none fixed inset-0 z-0 [&>canvas]:block [&>canvas]:h-full [&>canvas]:w-full" aria-hidden="true" />;
+  return (
+    <div ref={mountRef} className="pointer-events-none fixed inset-0 z-0 [&>canvas]:relative [&>canvas]:block [&>canvas]:h-full [&>canvas]:w-full" aria-hidden="true">
+      {/* backlights: warm behind the human brain, ember behind the robot brain; positioned every frame */}
+      <div ref={glowHome} className="absolute left-0 top-0 rounded-full bg-[radial-gradient(circle,rgba(255,200,150,0.16)_0%,rgba(255,122,26,0.07)_40%,transparent_70%)] blur-2xl will-change-transform" />
+      <div ref={glowDest} className="absolute left-0 top-0 rounded-full bg-[radial-gradient(circle,rgba(255,122,26,0.24)_0%,rgba(217,82,14,0.09)_40%,transparent_70%)] blur-2xl will-change-transform" />
+    </div>
+  );
 }

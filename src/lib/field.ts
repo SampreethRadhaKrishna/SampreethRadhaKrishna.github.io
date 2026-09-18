@@ -111,7 +111,7 @@ export function robotBrainSlots(rb: RobotBrain, n: number) {
     // core points are local to the chip centre; the shader spins them and places them
     pos[i * 3] = rb.data[o] * scale + (rnd() - 0.5) * j;
     pos[i * 3 + 1] = rb.data[o + 1] * scale + (rnd() - 0.5) * j;
-    pos[i * 3 + 2] = rb.data[o + 2] * scale + (isCore ? 0 : (rnd() - 0.5) * 0.02);
+    pos[i * 3 + 2] = rb.data[o + 2] * scale + (isCore ? 0 : (rnd() - 0.5) * 0.006);
     bright[i] = Math.min(1, rb.data[o + 3] * (i < m ? 1.15 : 0.95));
     trace[i] = isCore ? 400 + Math.floor(rnd() * 40) : rb.data[o + 4]; // core edges get their own pulse phases
     t[i] = rb.data[o + 5];
