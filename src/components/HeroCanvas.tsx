@@ -25,6 +25,7 @@ const vert = /* glsl */ `
   attribute float aBrightDest;
   attribute float aTrace;
   attribute float aT;
+  attribute float aCore;   // 1 = part of the revolving core inside the chip
 
   uniform float uTime;
   uniform float uCycle;
@@ -41,6 +42,7 @@ const vert = /* glsl */ `
   uniform float uConverge;
   uniform float uDim;
   uniform float uFan;      // vertical spread of the stream: 1 in the hero, wider once scrolled
+  uniform vec3 uChip;      // chip centre in robot-brain space
 
   varying float vBright;
   varying float vStage;    // 0 = human, 1 = data, 2 = robot
@@ -55,13 +57,25 @@ const vert = /* glsl */ `
     float c = cos(a), s = sin(a);
     return vec3(p.x * c + p.z * s, p.y, -p.x * s + p.z * c);
   }
+  vec3 rotZ(vec3 p, float a) {
+    float c = cos(a), s = sin(a);
+    return vec3(p.x * c - p.y * s, p.x * s + p.y * c, p.z);
+  }
+  vec3 rotX(vec3 p, float a) {
+    float c = cos(a), s = sin(a);
+    return vec3(p.x, p.y * c - p.z * s, p.y * s + p.z * c);
+  }
 
   void main() {
     float phase = fract(uTime / uCycle + aSeed);
     float a = uRestHome, b = uRestHome + uDisperse, c = uRestHome + uDisperse + uConverge;
 
     vec3 home = rotY(aHome, uHomeRot) + uHomeOffset;
-    vec3 dest = rotY(aDest, uDestTilt) + uDestOffset;
+    // the core spins about the chip's vertical axis; everything else is a fixed slot
+    // the core spins about its own axis, and that axis is tipped diagonally in the chip plane
+    // ...and the whole tilted assembly turns slowly about the axis perpendicular to the board
+    vec3 destLocal = aCore > 0.5 ? uChip + rotZ(rotX(rotZ(rotY(aDest, uTime * 0.42), -0.62), 0.35), uTime * 0.16) : aDest;
+    vec3 dest = rotY(destLocal, uDestTilt) + uDestOffset;
     // data cloud, rebuilt every frame between wherever the two brains are, then drifting
     float w = uTime * 0.5 + aSeed * 6.2831;
     vec3 span = uDestOffset - uHomeOffset;
@@ -105,7 +119,7 @@ const vert = /* glsl */ `
         float head2 = fract(head + 0.5);
         pulse += smoothstep(0.06, 0.0, abs(aT - head2)) * 0.35;
       }
-      bright = min(1.3, aBrightDest * 1.15 + pulse);
+      bright = min(1.3, aBrightDest * (aCore > 0.5 ? 1.25 : 1.15) + pulse);
       alpha = 1.0 - smoothstep(0.92, 1.0, k);
       stage = 2.0;
     }
@@ -200,6 +214,7 @@ export default function HeroCanvas({ onTelemetry, onReady }: Props) {
     geo.setAttribute('aBrightDest', new THREE.BufferAttribute(destB, 1));
     geo.setAttribute('aTrace', new THREE.BufferAttribute(trace, 1));
     geo.setAttribute('aT', new THREE.BufferAttribute(tt, 1));
+    geo.setAttribute('aCore', new THREE.BufferAttribute(new Float32Array(N), 1));
     geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(), 20);
 
     const mat = new THREE.ShaderMaterial({
@@ -225,6 +240,7 @@ export default function HeroCanvas({ onTelemetry, onReady }: Props) {
         uConverge: { value: SEG.converge },
         uDim: { value: 1 },
         uFan: { value: 1 },
+        uChip: { value: new THREE.Vector3(0, 0, 0) },
         uHuman: { value: new THREE.Color('#FFE3C8') },
         uData: { value: new THREE.Color('#FF7A1A') },
         uRobot: { value: new THREE.Color('#FF6E12') },
@@ -243,6 +259,8 @@ export default function HeroCanvas({ onTelemetry, onReady }: Props) {
         (geo.getAttribute('aBrightDest') as THREE.BufferAttribute).set(slots.bright).needsUpdate = true;
         (geo.getAttribute('aTrace') as THREE.BufferAttribute).set(slots.trace).needsUpdate = true;
         (geo.getAttribute('aT') as THREE.BufferAttribute).set(slots.t).needsUpdate = true;
+        (geo.getAttribute('aCore') as THREE.BufferAttribute).set(slots.core).needsUpdate = true;
+        (mat.uniforms.uChip.value as THREE.Vector3).set(slots.chip[0], slots.chip[1], 0.04);
         robotLoaded = true;
       })
       .catch(() => {});

@@ -90,7 +90,7 @@ export function streamCloud(n: number): Cloud {
   return { pos, bright };
 }
 
-export type RobotBrain = { n: number; traces: number; data: number[] };
+export type RobotBrain = { n: number; traces: number; chip: [number, number]; data: number[] };
 
 // Expand the precomputed circuit brain into per-particle destinations.
 // Each particle is assigned one slot; extra particles double up with a small jitter.
@@ -100,18 +100,22 @@ export function robotBrainSlots(rb: RobotBrain, n: number) {
   const bright = new Float32Array(n);
   const trace = new Float32Array(n);
   const t = new Float32Array(n);
+  const core = new Float32Array(n);
   const m = rb.n;
   const scale = 1.18;
   for (let i = 0; i < n; i++) {
     const k = i < m ? i : Math.floor(rnd() * m);
     const o = k * 6;
-    const j = i < m ? 0 : 0.006;
+    const isCore = rb.data[o + 4] < -1.5;
+    const j = i < m ? 0 : isCore ? 0.003 : 0.006;
+    // core points are local to the chip centre; the shader spins them and places them
     pos[i * 3] = rb.data[o] * scale + (rnd() - 0.5) * j;
     pos[i * 3 + 1] = rb.data[o + 1] * scale + (rnd() - 0.5) * j;
-    pos[i * 3 + 2] = rb.data[o + 2] * scale + (rnd() - 0.5) * 0.02;
+    pos[i * 3 + 2] = rb.data[o + 2] * scale + (isCore ? 0 : (rnd() - 0.5) * 0.02);
     bright[i] = Math.min(1, rb.data[o + 3] * (i < m ? 1.15 : 0.95));
-    trace[i] = rb.data[o + 4];
+    trace[i] = isCore ? 400 + Math.floor(rnd() * 40) : rb.data[o + 4]; // core edges get their own pulse phases
     t[i] = rb.data[o + 5];
+    core[i] = isCore ? 1 : 0;
   }
-  return { pos, bright, trace, t };
+  return { pos, bright, trace, t, core, chip: [rb.chip[0] * scale, rb.chip[1] * scale] as [number, number] };
 }
