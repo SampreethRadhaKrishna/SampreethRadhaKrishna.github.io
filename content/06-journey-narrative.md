@@ -48,7 +48,7 @@ are and what you're working toward.
 **Name:** Sampreeth Radha Krishna
 **Role:** Robotics Software Engineer
 
-**One line (locked):** Working toward fully autonomous robots.
+**One line (locked):** Working towards fully autonomous robots.
 
 **Second line, factual:**
 > San Francisco. Previously Open Droids, Case Western, Accenture.

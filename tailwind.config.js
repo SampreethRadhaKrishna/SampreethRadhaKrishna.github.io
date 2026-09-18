@@ -1,50 +1,43 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./assets/js/**/*.js"],
-  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        'obsidian': '#05050A',
-        'obsidian-dark': '#020205',
-        'obsidian-light': '#0A0A14',
-        'electric-purple': '#B026FF',
-        'electric-purple-dark': '#8A2BE2',
-        'electric-purple-light': '#D866FF',
-        'lavender': '#B4B0C5',
-        'lavender-muted': '#6B6D8A',
-        'gray-100': '#1A1A2E',
-        'gray-200': '#2A2A40',
-        'gray-300': '#3A3A55',
+        // warm near-black ground, cosmic-orange accent
+        obsidian: '#0A0807',
+        'obsidian-deep': '#050403',
+        'obsidian-lift': '#141008',
+        ember: {
+          DEFAULT: '#FF7A1A',
+          deep: '#D9520E',
+          soft: '#FFB073',
+          glow: '#FFC79A',
+        },
+        ash: '#B8AFA6',
+        'ash-dim': '#7E766E',
+        bone: '#F2EDE6',
       },
       fontFamily: {
-        'mono': ['JetBrains Mono', 'Fira Code', 'monospace'],
-        'sans': ['Inter', 'Roboto Mono', 'system-ui', 'sans-serif'],
+        body: ["'Inconsolata'", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        display: ["'Inknut Antiqua'", 'Georgia', 'serif'],
+        mono: ["'JetBrains Mono'", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       boxShadow: {
-        'neon': '0 0 10px rgba(176, 38, 255, 0.5), 0 0 20px rgba(176, 38, 255, 0.3)',
-        'neon-strong': '0 0 15px rgba(176, 38, 255, 0.8), 0 0 30px rgba(176, 38, 255, 0.5)',
-        'glow': '0 0 8px rgba(176, 38, 255, 0.4)',
-      },
-      backgroundImage: {
-        'grid-pattern': "linear-gradient(rgba(176, 38, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(176, 38, 255, 0.03) 1px, transparent 1px)",
-        'dots': "radial-gradient(rgba(176, 38, 255, 0.1) 1px, transparent 1px)",
-      },
-      animation: {
-        'blink': 'blink 1s step-end infinite',
-        'scanline': 'scanline 8s linear infinite',
+        glow: '0 0 24px rgba(255, 122, 26, 0.35)',
+        'glow-strong': '0 0 40px rgba(255, 122, 26, 0.55), 0 0 90px rgba(255, 122, 26, 0.25)',
       },
       keyframes: {
-        blink: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
-        },
-        scanline: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100%)' },
-        },
+        blink: { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0' } },
+        rise: { from: { opacity: '0', transform: 'translateY(12px)' }, to: { opacity: '1', transform: 'none' } },
+        pulse_trace: { '0%': { backgroundPosition: '0% 0' }, '100%': { backgroundPosition: '200% 0' } },
+      },
+      animation: {
+        blink: 'blink 1.1s step-end infinite',
+        rise: 'rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both',
+        trace: 'pulse_trace 2.4s linear infinite',
       },
     },
   },
   plugins: [],
-}
+};
