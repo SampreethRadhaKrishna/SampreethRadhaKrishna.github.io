@@ -161,7 +161,7 @@ export const journey: Chapter[] = [
     id: "c1",
     when: "~2010",
     title: "The first robot",
-    line: "In sixth grade I built a line-follower that turned left or right because of what it saw on the floor. The first decision I ever wrote.",
+    line: "In sixth grade I built a line follower that turned left or right because of what it saw on the floor. The first decision I ever wrote.",
     carried: "A machine can decide from what it observes.",
     media: [
       {"src": "/images/journey/line_follower_nxt.jpg", "alt": "A 2011 LEGO line follower", "credit": {"href": "https://commons.wikimedia.org/wiki/File:40365_Line_Follower_Robot.jpg", "label": "chauromano, CC BY 2.0"}, "illustrative": true},
@@ -172,7 +172,7 @@ export const journey: Chapter[] = [
     id: "c2",
     when: "2016–2018",
     title: "Autonomous, or nothing",
-    line: "A fire-fighting robot that found the heat and sprayed it out. A car that steered and braked around obstacles, with an airbag for the crashes it couldn't avoid.",
+    line: "A firefighting robot that found the heat and sprayed it out. A car that steered and braked around obstacles, with an airbag for the crashes it couldn't avoid.",
     carried: "Sense, decide, act. Everything since is that loop, bigger.",
     media: [
       {"src": "/images/p41.png", "alt": "Fire detection on a real flame"},
@@ -191,7 +191,7 @@ export const journey: Chapter[] = [
     logo: {"src": "/images/journey/logo_hal.svg", "alt": "Hindustan Aeronautics Limited"},
     media: [
       {"src": "/images/journey/hal_tejas_build.jpg", "alt": "Tejas trainer on the HAL Bangalore assembly floor", "credit": {"href": "https://commons.wikimedia.org/wiki/File:HAL_Tejas_trainer_version_construction.JPG", "label": "Ajai Shukla, CC BY 2.5 IN"}},
-      {"src": "/media/journey/tejas_refuel.mp4", "alt": "Tejas, first air-to-air refuelling", "video": true, "credit": {"href": "https://commons.wikimedia.org/wiki/File:LCA_Tejas_maiden_air-to-air_refuelling.ogv", "label": "Ministry of Defence, GODL-India"}},
+      {"src": "/media/journey/tejas_refuel.mp4", "alt": "Tejas, first air-to-air refueling", "video": true, "credit": {"href": "https://commons.wikimedia.org/wiki/File:LCA_Tejas_maiden_air-to-air_refuelling.ogv", "label": "Ministry of Defence, GODL-India"}},
       {"src": "/images/journey/hal_tejas_pair.jpg", "alt": "Two HAL Tejas in formation", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Two_HAL_Tejas_flying_in_formation.jpg", "label": "Indian Air Force, GODL-India"}},
     ],
     links: [],
@@ -312,7 +312,7 @@ export const press: Press[] = [
 export const now = { eyebrow: "Now", story: "Sixteen years of closing the loop between what a robot sees and what it does. Now I'm building a new way to understand manipulation for robotics. That's all I'll say for now.", mission: "I'm here to make robots fully autonomous. I'm not stopping until then!" };
 
 export const contact = {
-  line: "Building toward autonomous robots, or funding people who are? Let's talk.",
+  line: "Building towards autonomous robots, or funding people who are? Let's talk.",
   email: "rk.sampreeth@gmail.com",
   linkedin: "https://www.linkedin.com/in/sampreethradhakrishna/",
   github: "https://github.com/SampreethRadhaKrishna",

@@ -176,7 +176,7 @@ function Feed({ clip, index, onOpen }: { clip: Clip; index: number; onOpen: () =
   return (
     <button
       onClick={onOpen}
-      aria-label={`Play ${clip.label} with sound`}
+      aria-label={`Play "${clip.label}" with sound`}
       className="group relative block aspect-[9/16] w-full overflow-hidden rounded-2xl bg-black text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
     >
       <video ref={ref} src={clip.src} poster={clip.poster} muted loop playsInline preload="none" className={`h-full w-full transition-transform duration-500 group-hover:scale-[1.04] ${clip.contain ? 'object-contain' : 'object-cover'}`} />
