@@ -15,6 +15,7 @@ Personal site for Sampreeth Radha Krishna, robotics software engineer. Served as
 - Three.js for the hero point field (`src/components/HeroCanvas.tsx`, targets in `src/lib/field.ts`).
 - Lucide icons.
 - Deploy: `.github/workflows/deploy.yml` builds and publishes `dist/` with the GitHub Pages actions. Only a push to `test` (the default, working branch) publishes, plus manual `workflow_dispatch`; a running deploy is never cancelled. Pages must be set to "GitHub Actions" as the source in the repo settings. Live at https://sampreethradhakrishna.github.io/, so Vite `base: '/'` is correct.
+- Second home: https://dextini.com/founder-story/ (Cloudflare Pages project `dextini`, direct upload). `npm run deploy:founder-story` builds with `--base /founder-story/` and uploads it together with the dextini landing page from `~/code/dextini-site`, because each upload replaces the whole site. Public files are referenced through `asset()` in `site.ts`, never as bare `/images/...` paths, so both bases work.
 
 ## Layout
 

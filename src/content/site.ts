@@ -1,6 +1,10 @@
 // ALL site copy lives here. The prose is generated from content/06-journey-narrative.md (draft 8)
 // via .lavish/journey.html: change wording in the source first, then here. Components hold no strings.
 
+// Files in public/, resolved against the build's base so the site works at the domain root
+// (GitHub Pages) and under a sub-path (dextini.com/founder-story/).
+export const asset = (p: string) => import.meta.env.BASE_URL + p.replace(/^\//, '');
+
 export type Link = { href: string; label: string };
 export type Figure = { src: string; alt: string };
 // One journey stop: a one-line account, what it left me with, the organisation's logo, and pictures.
@@ -79,7 +83,7 @@ export const latest: Latest = {
   summary: "Two years owning the software for a family of robots.",
   facts: ["All robots, one stack", "R2D3 at CES 2025 and 2026", "Models on the robot, not the cloud"],
   photo: {
-    src: "/images/open_droids_main.jpg",
+    src: asset("/images/open_droids_main.jpg"),
     alt: "Sampreeth at a laptop beside the arms of an Open Droids robot",
     width: 1200,
     height: 1600,
@@ -87,13 +91,13 @@ export const latest: Latest = {
   storyHeading: "The story",
   reelHeading: "From the floor",
   reel: [
-    { src: "/media/open_droids/booth.mp4", poster: "/media/open_droids/booth.jpg", label: "With R2D3 at the booth" },
-    { src: "/media/open_droids/hand.mp4", poster: "/media/open_droids/hand.jpg", label: "Dexterous hand", date: "Mar 2026" },
-    { src: "/media/open_droids/glove.mp4", poster: "/media/open_droids/glove.jpg", label: "Glove teleop, mirrored in sim", date: "Mar 2026" },
-    { src: "/media/open_droids/teleop.mp4", poster: "/media/open_droids/teleop.jpg", label: "Beat 1X", date: "Nov 2025", contain: true },
-    { src: "/media/open_droids/dishwasher.mp4", poster: "/media/open_droids/dishwasher.jpg", label: "Unloading a dishwasher", date: "Mar 2025" },
-    { src: "/media/open_droids/hackathon.mp4", poster: "/media/open_droids/hackathon.jpg", label: "The hackathon", date: "Jan 2026" },
-    { src: "/media/open_droids/mobile.mp4", poster: "/media/open_droids/mobile.jpg", label: "Droid 1" },
+    { src: asset("/media/open_droids/booth.mp4"), poster: asset("/media/open_droids/booth.jpg"), label: "With R2D3 at the booth" },
+    { src: asset("/media/open_droids/hand.mp4"), poster: asset("/media/open_droids/hand.jpg"), label: "Dexterous hand", date: "Mar 2026" },
+    { src: asset("/media/open_droids/glove.mp4"), poster: asset("/media/open_droids/glove.jpg"), label: "Glove teleop, mirrored in sim", date: "Mar 2026" },
+    { src: asset("/media/open_droids/teleop.mp4"), poster: asset("/media/open_droids/teleop.jpg"), label: "Beat 1X", date: "Nov 2025", contain: true },
+    { src: asset("/media/open_droids/dishwasher.mp4"), poster: asset("/media/open_droids/dishwasher.jpg"), label: "Unloading a dishwasher", date: "Mar 2025" },
+    { src: asset("/media/open_droids/hackathon.mp4"), poster: asset("/media/open_droids/hackathon.jpg"), label: "The hackathon", date: "Jan 2026" },
+    { src: asset("/media/open_droids/mobile.mp4"), poster: asset("/media/open_droids/mobile.jpg"), label: "Droid 1" },
   ],
   story: [
     {
@@ -164,7 +168,7 @@ export const journey: Chapter[] = [
     line: "In sixth grade I built a line follower that turned left or right because of what it saw on the floor. The first decision I ever wrote.",
     carried: "A machine can decide from what it observes.",
     media: [
-      {"src": "/images/journey/line_follower_nxt.jpg", "alt": "A 2011 LEGO line follower", "credit": {"href": "https://commons.wikimedia.org/wiki/File:40365_Line_Follower_Robot.jpg", "label": "chauromano, CC BY 2.0"}, "illustrative": true},
+      {"src": asset("/images/journey/line_follower_nxt.jpg"), "alt": "A 2011 LEGO line follower", "credit": {"href": "https://commons.wikimedia.org/wiki/File:40365_Line_Follower_Robot.jpg", "label": "chauromano, CC BY 2.0"}, "illustrative": true},
     ],
     links: [],
   },
@@ -175,8 +179,8 @@ export const journey: Chapter[] = [
     line: "A firefighting robot that found the heat and sprayed it out. A car that steered and braked around obstacles, with an airbag for the crashes it couldn't avoid.",
     carried: "Sense, decide, act. Everything since is that loop, bigger.",
     media: [
-      {"src": "/images/p41.png", "alt": "Fire detection on a real flame"},
-      {"src": "/images/p32.png", "alt": "External airbag deploying on impact, simulation"},
+      {"src": asset("/images/p41.png"), "alt": "Fire detection on a real flame"},
+      {"src": asset("/images/p32.png"), "alt": "External airbag deploying on impact, simulation"},
     ],
     links: [
       { href: "https://github.com/Sampreeth98/ROS2-Projects", label: "ROS2-Projects" },
@@ -188,11 +192,11 @@ export const journey: Chapter[] = [
     title: "Hindustan Aeronautics",
     line: "Intern on the Tejas and Rafale programs and on Airbus aircraft doors, from design through the manufacturing line.",
     carried: "Build it so it can be built a thousand times, identically.",
-    logo: {"src": "/images/journey/logo_hal.svg", "alt": "Hindustan Aeronautics Limited"},
+    logo: {"src": asset("/images/journey/logo_hal.svg"), "alt": "Hindustan Aeronautics Limited"},
     media: [
-      {"src": "/images/journey/hal_tejas_build.jpg", "alt": "Tejas trainer on the HAL Bangalore assembly floor", "credit": {"href": "https://commons.wikimedia.org/wiki/File:HAL_Tejas_trainer_version_construction.JPG", "label": "Ajai Shukla, CC BY 2.5 IN"}},
-      {"src": "/media/journey/tejas_refuel.mp4", "alt": "Tejas, first air-to-air refueling", "video": true, "credit": {"href": "https://commons.wikimedia.org/wiki/File:LCA_Tejas_maiden_air-to-air_refuelling.ogv", "label": "Ministry of Defence, GODL-India"}},
-      {"src": "/images/journey/hal_tejas_pair.jpg", "alt": "Two HAL Tejas in formation", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Two_HAL_Tejas_flying_in_formation.jpg", "label": "Indian Air Force, GODL-India"}},
+      {"src": asset("/images/journey/hal_tejas_build.jpg"), "alt": "Tejas trainer on the HAL Bangalore assembly floor", "credit": {"href": "https://commons.wikimedia.org/wiki/File:HAL_Tejas_trainer_version_construction.JPG", "label": "Ajai Shukla, CC BY 2.5 IN"}},
+      {"src": asset("/media/journey/tejas_refuel.mp4"), "alt": "Tejas, first air-to-air refueling", "video": true, "credit": {"href": "https://commons.wikimedia.org/wiki/File:LCA_Tejas_maiden_air-to-air_refuelling.ogv", "label": "Ministry of Defence, GODL-India"}},
+      {"src": asset("/images/journey/hal_tejas_pair.jpg"), "alt": "Two HAL Tejas in formation", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Two_HAL_Tejas_flying_in_formation.jpg", "label": "Indian Air Force, GODL-India"}},
     ],
     links: [],
   },
@@ -203,7 +207,7 @@ export const journey: Chapter[] = [
     line: "Most of the hackathons I could reach around Bangalore. Thirty-six to forty-eight hours, a lot of coffee, demos that mostly worked.",
     carried: "How much a small team ships when nobody waits for permission.",
     media: [
-      {"src": "/images/journey/hackathon_hardware.jpg", "alt": "Building hardware at a hackathon", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Hackathon_1_%22Arduino%22_-_Foto_T%C3%A1rlis_Schneider_(19372442659).jpg", "label": "Tárlis Schneider, CC BY-SA 2.0"}, "illustrative": true},
+      {"src": asset("/images/journey/hackathon_hardware.jpg"), "alt": "Building hardware at a hackathon", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Hackathon_1_%22Arduino%22_-_Foto_T%C3%A1rlis_Schneider_(19372442659).jpg", "label": "Tárlis Schneider, CC BY-SA 2.0"}, "illustrative": true},
     ],
     links: [],
   },
@@ -213,10 +217,10 @@ export const journey: Chapter[] = [
     title: "The solar car",
     line: "Team Dritan Racers: thirty students building an electric solar car from scratch for ESVC 2019. I was on design and autonomy, building the sensor pipelines that assisted the driver.",
     carried: "Systems thinking across mechanical, electrical and software.",
-    logo: {"src": "/images/journey/logo_dritan.png", "alt": "Team Dritan Racers"},
+    logo: {"src": asset("/images/journey/logo_dritan.png"), "alt": "Team Dritan Racers"},
     media: [
-      {"src": "/media/journey/solar_build.mp4", "alt": "Fitting the body and solar panels, 2019", "video": true, "credit": {"href": "https://www.youtube.com/watch?v=rTtckKDNej4", "label": "ISIEINDIA on YouTube"}},
-      {"src": "/images/journey/solar_team.jpg", "alt": "The team with the car", "credit": {"href": "https://www.youtube.com/watch?v=rTtckKDNej4", "label": "ISIEINDIA on YouTube"}},
+      {"src": asset("/media/journey/solar_build.mp4"), "alt": "Fitting the body and solar panels, 2019", "video": true, "credit": {"href": "https://www.youtube.com/watch?v=rTtckKDNej4", "label": "ISIEINDIA on YouTube"}},
+      {"src": asset("/images/journey/solar_team.jpg"), "alt": "The team with the car", "credit": {"href": "https://www.youtube.com/watch?v=rTtckKDNej4", "label": "ISIEINDIA on YouTube"}},
     ],
     links: [
       { href: "https://www.youtube.com/watch?v=rTtckKDNej4", label: "Dritan Racers on YouTube" },
@@ -228,11 +232,11 @@ export const journey: Chapter[] = [
     title: "Bosch Rexroth",
     line: "Robotic arms, pneumatics, hydraulics and the PLCs that run them. Cells that run for years without a mistake, and never see anything.",
     carried: "Automated is not autonomous.",
-    logo: {"src": "/images/journey/logo_bosch_rexroth.svg", "alt": "Bosch Rexroth"},
+    logo: {"src": asset("/images/journey/logo_bosch_rexroth.svg"), "alt": "Bosch Rexroth"},
     media: [
-      {"src": "/images/journey/rexroth_pumps_bangalore.jpg", "alt": "Rexroth hydraulic pumps, Bangalore", "credit": {"href": "https://commons.wikimedia.org/wiki/File:EXCON_2025,_Bangalore_International_Exhibition_Centre_(514).jpg", "label": "Gpkp, CC BY-SA 4.0"}},
-      {"src": "/images/journey/automation_line.jpg", "alt": "A robotic line with pneumatic grippers", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Linia_zrobotyzowana_w_AIUT.png", "label": "Marta Veverica, CC BY-SA 4.0"}, "illustrative": true},
-      {"src": "/images/journey/automation_welding.jpg", "alt": "Industrial robots on a body line", "credit": {"href": "https://commons.wikimedia.org/wiki/File:BMW_Leipzig_MEDIA_050719_Download_Karosseriebau_max.jpg", "label": "BMW Werk Leipzig, CC BY-SA 2.0 DE"}, "illustrative": true},
+      {"src": asset("/images/journey/rexroth_pumps_bangalore.jpg"), "alt": "Rexroth hydraulic pumps, Bangalore", "credit": {"href": "https://commons.wikimedia.org/wiki/File:EXCON_2025,_Bangalore_International_Exhibition_Centre_(514).jpg", "label": "Gpkp, CC BY-SA 4.0"}},
+      {"src": asset("/images/journey/automation_line.jpg"), "alt": "A robotic line with pneumatic grippers", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Linia_zrobotyzowana_w_AIUT.png", "label": "Marta Veverica, CC BY-SA 4.0"}, "illustrative": true},
+      {"src": asset("/images/journey/automation_welding.jpg"), "alt": "Industrial robots on a body line", "credit": {"href": "https://commons.wikimedia.org/wiki/File:BMW_Leipzig_MEDIA_050719_Download_Karosseriebau_max.jpg", "label": "BMW Werk Leipzig, CC BY-SA 2.0 DE"}, "illustrative": true},
     ],
     links: [],
   },
@@ -243,8 +247,8 @@ export const journey: Chapter[] = [
     line: "Software engineer on a warehouse robotics client: two hundred robots on one floor. I kept the fleet healthy, from sensor data at scale to the AWS infrastructure under it.",
     carried: "Fleet thinking. The enemy isn't a bug; it's downtime.",
     media: [
-      {"src": "/images/journey/factory_glass.jpg", "alt": "Robotic arms unloading glass sheets on a factory line", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Float_Glass_Unloading.jpg", "label": "ICAPlants, CC BY-SA 3.0"}, "illustrative": true},
-      {"src": "/images/journey/factory_palletizing.jpg", "alt": "Robotic arms palletizing crates on a factory floor", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Factory_Automation_Robotics_Palettizing_Bread.jpg", "label": "KUKA Roboter GmbH, public domain"}, "illustrative": true},
+      {"src": asset("/images/journey/factory_glass.jpg"), "alt": "Robotic arms unloading glass sheets on a factory line", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Float_Glass_Unloading.jpg", "label": "ICAPlants, CC BY-SA 3.0"}, "illustrative": true},
+      {"src": asset("/images/journey/factory_palletizing.jpg"), "alt": "Robotic arms palletizing crates on a factory floor", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Factory_Automation_Robotics_Palettizing_Bread.jpg", "label": "KUKA Roboter GmbH, public domain"}, "illustrative": true},
     ],
     links: [],
   },
@@ -254,12 +258,12 @@ export const journey: Chapter[] = [
     title: "Case Western",
     line: "Master of Science in AI/ML and Robotics. Bio-inspired and soft robotics in Roger Quinn's Biorobotics Lab, including soft robotic graspers.",
     carried: "The full stack: hardware, software and learning.",
-    logo: {"src": "/images/journey/logo_cwru.svg", "alt": "Case Western Reserve University"},
+    logo: {"src": asset("/images/journey/logo_cwru.svg"), "alt": "Case Western Reserve University"},
     media: [
-      {"src": "/images/journey/cwru_softworm.jpg", "alt": "A soft, worm-inspired robot from the Biorobotics Lab", "credit": {"href": "https://www.youtube.com/watch?v=lizfM1ZqiAI", "label": "CWRU on YouTube"}},
-      {"src": "/images/journey/cwru_crab.jpg", "alt": "A crab-inspired legged robot", "credit": {"href": "https://case.edu/think/spring2024/wild-ideas.html", "label": "Jianfeng Zhou, CWRU Think"}},
-      {"src": "/media/journey/cwru_crab.mp4", "alt": "Crab-inspired robots on land and underwater", "video": true, "credit": {"href": "https://www.youtube.com/watch?v=csZAN4yw_aU", "label": "Veale Institute, CWRU"}},
-      {"src": "/media/pick_place.mp4", "alt": "Pick and place, simulated", "video": true},
+      {"src": asset("/images/journey/cwru_softworm.jpg"), "alt": "A soft, worm-inspired robot from the Biorobotics Lab", "credit": {"href": "https://www.youtube.com/watch?v=lizfM1ZqiAI", "label": "CWRU on YouTube"}},
+      {"src": asset("/images/journey/cwru_crab.jpg"), "alt": "A crab-inspired legged robot", "credit": {"href": "https://case.edu/think/spring2024/wild-ideas.html", "label": "Jianfeng Zhou, CWRU Think"}},
+      {"src": asset("/media/journey/cwru_crab.mp4"), "alt": "Crab-inspired robots on land and underwater", "video": true, "credit": {"href": "https://www.youtube.com/watch?v=csZAN4yw_aU", "label": "Veale Institute, CWRU"}},
+      {"src": asset("/media/pick_place.mp4"), "alt": "Pick and place, simulated", "video": true},
     ],
     links: [
       { href: "https://github.com/Sampreeth98", label: "github.com/Sampreeth98" },
@@ -272,8 +276,8 @@ export const journey: Chapter[] = [
     line: "A 5-DOF arm with a depth camera on its wrist. YOLO finds the target, and a trained network turns it into smooth motion at high frequency. Simulated in Isaac Sim and Gazebo, run on a Raspberry Pi.",
     carried: "Perception to motion, in a closed loop, fast.",
     media: [
-      {"src": "/images/p11.png", "alt": "The arm, CAD render"},
-      {"src": "/media/journey/arm_cam.mp4", "alt": "The arm tracking its target from the wrist camera", "video": true},
+      {"src": asset("/images/p11.png"), "alt": "The arm, CAD render"},
+      {"src": asset("/media/journey/arm_cam.mp4"), "alt": "The arm tracking its target from the wrist camera", "video": true},
     ],
     links: [
       { href: "https://github.com/Sampreeth98/ROS2-Projects", label: "ROS2-Projects" },

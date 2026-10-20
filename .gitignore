@@ -1,6 +1,7 @@
 .claude/
 node_modules/
 dist/
+dist-founder/
 # The Lavish review copy is a build output.
 .lavish/site/
 # Raw footage; the site uses the compressed copies in public/media/.

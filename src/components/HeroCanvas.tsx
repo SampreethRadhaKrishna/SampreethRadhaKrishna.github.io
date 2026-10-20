@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { humanBrain, streamCloud, robotBrainSlots, type RobotBrain } from '../lib/field';
-import { heroLabels } from '../content/site';
+import { asset, heroLabels } from '../content/site';
 
 const PARTICLES = 30000;
 const CYCLE_S = 11; // one particle's full life: human brain → data → robot brain → respawn
@@ -636,7 +636,7 @@ export default function HeroCanvas() {
     // The circuit brain. Until it arrives (or if it never does) the scene is the human brain alone.
     let disposed = false;
     const abort = new AbortController();
-    fetch('/data/robot_brain.json', { signal: abort.signal })
+    fetch(asset('/data/robot_brain.json'), { signal: abort.signal })
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json() as Promise<RobotBrain>;

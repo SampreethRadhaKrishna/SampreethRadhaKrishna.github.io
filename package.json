@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --port 4173 --strictPort"
+    "preview": "vite preview --port 4173 --strictPort",
+    "deploy:founder-story": "scripts/deploy-founder-story.sh"
   },
   "dependencies": {
     "framer-motion": "^11.11.17",
