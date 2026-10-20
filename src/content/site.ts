@@ -73,11 +73,11 @@ export const thread = "Every robot I've built removed human effort and helped hu
 
 export const latest: Latest = {
   id: "c10",
-  when: "Nov 2024 – Sep 2026 · San Francisco",
+  when: "Nov 2024–Sep 2026 · San Francisco",
   name: "Open Droids",
   tagline: "Robots for good. Robots that stay yours.",
   summary: "Two years owning the software for a family of robots.",
-  facts: ["All robots, one stack", "R2D3 at CES 2025 + 2026", "Models on the robot, not the cloud"],
+  facts: ["All robots, one stack", "R2D3 at CES 2025 and 2026", "Models on the robot, not the cloud"],
   photo: {
     src: "/images/open_droids_main.jpg",
     alt: "Sampreeth at a laptop beside the arms of an Open Droids robot",
@@ -241,7 +241,7 @@ export const journey: Chapter[] = [
     when: "2020–2023",
     title: "Accenture",
     line: "Software engineer on a warehouse robotics client: two hundred robots on one floor. I kept the fleet healthy, from sensor data at scale to the AWS infrastructure under it.",
-    carried: "Fleet thinking. The enemy isn't a bug, it's downtime.",
+    carried: "Fleet thinking. The enemy isn't a bug; it's downtime.",
     media: [
       {"src": "/images/journey/factory_glass.jpg", "alt": "Robotic arms unloading glass sheets on a factory line", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Float_Glass_Unloading.jpg", "label": "ICAPlants, CC BY-SA 3.0"}, "illustrative": true},
       {"src": "/images/journey/factory_palletizing.jpg", "alt": "Robotic arms palletizing crates on a factory floor", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Factory_Automation_Robotics_Palettizing_Bread.jpg", "label": "KUKA Roboter GmbH, public domain"}, "illustrative": true},
@@ -268,7 +268,7 @@ export const journey: Chapter[] = [
   {
     id: "c9",
     when: "2024",
-    title: "High speed object following arm",
+    title: "High-speed object-following arm",
     line: "A 5-DOF arm with a depth camera on its wrist. YOLO finds the target, and a trained network turns it into smooth motion at high frequency. Simulated in Isaac Sim and Gazebo, run on a Raspberry Pi.",
     carried: "Perception to motion, in a closed loop, fast.",
     media: [
@@ -295,17 +295,17 @@ export type Press = { href: string; source: string; quote?: string; title?: stri
 
 export const press: Press[] = [
   { href: "https://www.therobotreport.com/open-droids-develops-both-single-dual-arm-mobile-manipulators/", source: "The Robot Report", quote: "The company is on a fast track to bring these solutions to market." },
-  { href: "https://mashable.com/article/ces-unveiled-2025-open-droids-r2d3-domestic-robot", source: "Mashable", quote: "OpenDroids' R2D3 domestic robot is 'Roomba on crack'" },
-  { href: "https://x.com/mashable/status/1876192056114032966", source: "Mashable on X", quote: "OpenDroids wants to chart a course in how we use robots for domestic tasks." },
-  { href: "https://x.com/TechCrunch/status/1876761274979070059", source: "TechCrunch on X", quote: "OpenDroids' R2D3 dual-arm robot aims to handle a ton of household chores." },
+  { href: "https://mashable.com/article/ces-unveiled-2025-open-droids-r2d3-domestic-robot", source: "Mashable", quote: "Open Droids' R2D3 domestic robot is 'Roomba on crack'" },
+  { href: "https://x.com/mashable/status/1876192056114032966", source: "Mashable on X", quote: "Open Droids wants to chart a course in how we use robots for domestic tasks." },
+  { href: "https://x.com/TechCrunch/status/1876761274979070059", source: "TechCrunch on X", quote: "Open Droids' R2D3 dual-arm robot aims to handle a ton of household chores." },
   { href: "https://www.youtube.com/watch?v=Zld8HilE8RI", source: "CES 2025 walkthrough", quote: "R2-D3 & R1D1 Open-Source Robots for Home & Hospitality" },
-  { href: "https://www.roboticgizmos.com/opendroids-r2d3/", source: "Robotic Gizmos", quote: "OpenDroids R2D3 Modular Open Source Dual Arm Robot" },
+  { href: "https://www.roboticgizmos.com/opendroids-r2d3/", source: "Robotic Gizmos", quote: "Open Droids R2D3 Modular Open Source Dual Arm Robot" },
   { href: "https://x.com/evan_wineland/status/1878920872616239218", source: "Evan Wineland on X", quote: "It's good to see more companies building non-wheeled, general-purpose platforms like @opendroids_" },
   { href: "https://aiforgood.itu.int/speaker/r2d3/", source: "ITU AI for Good", quote: "Built on an open-source platform, our robots are highly customizable." },
   { href: "https://x.com/OpenDroids/status/1990947763853631524", source: "Open Droids on X", quote: "Twice the speed, 99.9% less funding... @OpenDroids wins" },
   { href: "https://x.com/OpenDroids/status/1990949159910912138", source: "Open Droids on X", quote: "We welcome other challengers to the new dishes benchmark." },
   { href: "https://x.com/Scobleizer/status/1991054552381169733", source: "Robert Scoble on X", quote: "Robot wars." },
-  { href: "https://luma.com/8ca2z1rr", source: "Physical AI Hack 2026", quote: "Real robots on site, including Unitree G1, Open Droid R1D2/R2D3" },
+  { href: "https://luma.com/8ca2z1rr", source: "Physical AI Hack 2026", quote: "Real robots on site, including Unitree G1, Open Droids R1D2/R2D3" },
   { href: "https://www.linkedin.com/feed/update/urn:li:activity:7423378253114974208/", source: "Dhruv Diddi on LinkedIn", title: "The hackathon, January 2026" },
 ];
 

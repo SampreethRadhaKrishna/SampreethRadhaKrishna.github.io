@@ -63,6 +63,7 @@ legacy/                    the old template site, for reference; legacy/images/ 
 - Copy is final in `content/06-journey-narrative.md` (draft 8). Order: hero, Open Droids first, then the journey oldest-first, Now, beliefs, contact.
 - No inflation. Never say "built R2D3" (the software stack was built), never "featured in TechCrunch" (the robot was). The Accenture client is under NDA. The new venture gets one sentence and nothing more.
 - Words not to use: cutting-edge, innovative, passionate about innovation, seamlessly.
+- The company is always "Open Droids", including inside press quotes (sources wrote "OpenDroids" or "Open Droid"; the owner wants them normalised). URLs and the @OpenDroids handle stay as they are.
 
 ## Still owed by the owner
 
