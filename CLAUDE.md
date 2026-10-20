@@ -14,7 +14,7 @@ Personal site for Sampreeth Radha Krishna, robotics software engineer. Served as
 - Framer Motion for scroll reveals (`src/components/Reveal.tsx` is the one reveal treatment; reuse it rather than adding new ones).
 - Three.js for the hero point field (`src/components/HeroCanvas.tsx`, targets in `src/lib/field.ts`).
 - Lucide icons.
-- Deploy: `.github/workflows/deploy.yml` builds and publishes `dist/` with the GitHub Pages actions. Only a push to `test` (the default, working branch) publishes, plus manual `workflow_dispatch`; a running deploy is never cancelled. Pages must be set to "GitHub Actions" as the source in the repo settings. Live at https://sampreeth98.github.io/, so Vite `base: '/'` is correct.
+- Deploy: `.github/workflows/deploy.yml` builds and publishes `dist/` with the GitHub Pages actions. Only a push to `test` (the default, working branch) publishes, plus manual `workflow_dispatch`; a running deploy is never cancelled. Pages must be set to "GitHub Actions" as the source in the repo settings. Live at https://sampreethradhakrishna.github.io/, so Vite `base: '/'` is correct.
 
 ## Layout
 

@@ -1,4 +1,4 @@
-# Publishes the site to https://sampreeth98.github.io/.
+# Publishes the site to https://sampreethradhakrishna.github.io/.
 # Repo settings -> Pages -> Source must be "GitHub Actions" (not "Deploy from a branch").
 # Only `test` (the default, working branch) publishes on push. There is one live site,
 # so a second deploying branch would overwrite it with whichever was pushed last.

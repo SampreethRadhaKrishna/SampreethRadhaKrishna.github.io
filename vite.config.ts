@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// User site (Sampreeth98.github.io) is served from the domain root.
+// User site (SampreethRadhaKrishna.github.io) is served from the domain root.
 export default defineConfig({
   plugins: [react()],
   base: '/',
