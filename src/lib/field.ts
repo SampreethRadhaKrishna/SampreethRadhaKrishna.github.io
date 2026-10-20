@@ -4,7 +4,7 @@
 export type Cloud = { pos: Float32Array; bright: Float32Array };
 
 // Deterministic PRNG so the field is identical on every load.
-export function mulberry32(seed: number) {
+function mulberry32(seed: number) {
   let a = seed >>> 0;
   return () => {
     a = (a + 0x6d2b79f5) >>> 0;
@@ -70,13 +70,12 @@ export function humanBrain(n: number): Cloud {
 }
 
 // Where a particle goes while it is "data": a wide, drifting cloud between the brains.
-// Stored as (along, offsetY, offsetZ): `along` is the fraction of the way from the human
-// brain to the robot brain, so the shader can rebuild the cloud between wherever the two
-// brains currently sit. The lateral x-spread is folded into `along`.
-export function streamCloud(n: number): Cloud {
+// Returns packed (along, offsetY, offsetZ) triples: `along` is the fraction of the way from
+// the human brain to the robot brain, so the shader can rebuild the cloud between wherever
+// the two brains currently sit. The lateral x-spread is folded into `along`.
+export function streamCloud(n: number): Float32Array {
   const rnd = mulberry32(777);
   const pos = new Float32Array(n * 3);
-  const bright = new Float32Array(n);
   for (let i = 0; i < n; i++) {
     const along = rnd();
     const u = rnd() * Math.PI * 2, v = Math.acos(2 * rnd() - 1);
@@ -85,16 +84,25 @@ export function streamCloud(n: number): Cloud {
     pos[i * 3] = along + ox;
     pos[i * 3 + 1] = r * Math.cos(v) * 0.8;
     pos[i * 3 + 2] = r * Math.sin(v) * Math.sin(u) * 0.7;
-    bright[i] = 0.35 + 0.55 * rnd();
   }
-  return { pos, bright };
+  return pos;
 }
 
-export type RobotBrain = { n: number; traces: number; chip: [number, number]; data: number[] };
+// public/data/robot_brain.json. `data` holds `n` points of six numbers each:
+// x, y, z, brightness, trace id, t (position along the trace, 0..1).
+// Trace ids: 0..69 are routed traces, 70 the outline, 71 the inner outline, 72 the chip,
+// -2 a point of the revolving core inside the chip. (-1 would mean "on no trace, never
+// pulses"; the current file has none, and the shader uses -1 before the data arrives.)
+// The file's header also carries `traces` (70): that is the COUNT of routed traces, not the
+// largest id, and nothing reads it, so it is left out of the type.
+export type RobotBrain = { n: number; chip: [number, number]; data: number[] };
 
 // Expand the precomputed circuit brain into per-particle destinations.
 // Each particle is assigned one slot; extra particles double up with a small jitter.
 export function robotBrainSlots(rb: RobotBrain, n: number) {
+  if (!rb || !(rb.n > 0) || !Array.isArray(rb.data) || rb.data.length < rb.n * 6 || !Array.isArray(rb.chip)) {
+    throw new Error('robot_brain.json is malformed');
+  }
   const rnd = mulberry32(4242);
   const pos = new Float32Array(n * 3);
   const bright = new Float32Array(n);

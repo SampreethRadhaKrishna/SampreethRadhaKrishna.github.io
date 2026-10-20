@@ -1,0 +1,93 @@
+[
+  {
+    "file": "accenture_logo_2020.svg",
+    "kind": "logo",
+    "subject": "Accenture logo, current (2020-) version: black 'accenture' wordmark with the purple '>' greater-than mark (#A100FF). Transparent background.",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Accenture.svg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
+    "license": "Public domain (PD-textlogo on Commons: simple text and geometric shapes, below the threshold of originality). Registered trademark of Accenture; trademark rules still apply.",
+    "author": "Accenture",
+    "width": 163,
+    "height": 43,
+    "recommended": true,
+    "notes": "Vector, so it scales to any size. This is the version in use during 2020-2023. The '>' is Accenture purple, and the site bans purple, so the logo would be the only purple on the page. Brand guidelines don't allow recolouring the mark, so use it as-is or use it small. A black wordmark won't show on the obsidian ground; use the reversed variant there."
+  },
+  {
+    "file": "accenture_logo_2020_reversed_white.svg",
+    "kind": "logo",
+    "subject": "Same logo with the wordmark filled white for dark backgrounds; the '>' stays #A100FF.",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Accenture.svg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
+    "license": "Public domain (PD-textlogo); trademark of Accenture.",
+    "author": "Accenture; white fill applied locally (one style attribute on the wordmark path)",
+    "width": 163,
+    "height": 43,
+    "recommended": false,
+    "notes": "Derived file. Accenture publishes its own reversed (white) logo for dark backgrounds, so this matches an official treatment, but it was made locally rather than downloaded. Probably the one to use on the obsidian ground."
+  },
+  {
+    "file": "accenture_logo_2020_2400w.png",
+    "kind": "logo",
+    "subject": "PNG render of accenture_logo_2020.svg, transparent background.",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Accenture.svg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
+    "license": "Public domain (PD-textlogo); trademark of Accenture.",
+    "author": "Accenture; rasterised locally with headless Chrome",
+    "width": 2400,
+    "height": 632,
+    "recommended": false,
+    "notes": "For when a raster file is needed. Prefer the SVG."
+  },
+  {
+    "file": "accenture_logo_2020_reversed_white_2400w.png",
+    "kind": "logo",
+    "subject": "PNG render of the reversed (white wordmark) variant, transparent background.",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Accenture.svg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg",
+    "license": "Public domain (PD-textlogo); trademark of Accenture.",
+    "author": "Accenture; white fill and rasterisation done locally",
+    "width": 2400,
+    "height": 632,
+    "recommended": false,
+    "notes": "Raster copy of the dark-background variant."
+  },
+  {
+    "file": "autostore_robot_fleet_on_grid.jpg",
+    "kind": "photo",
+    "subject": "Wide shot of about 15 numbered storage robots (005, 009, 019, 097 ...) running on a cube-storage grid inside a warehouse hall. Red and black robots, red roof beams.",
+    "source_page": "https://commons.wikimedia.org/wiki/File:AutoStore_robots_on_the_grid.jpg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/1/10/AutoStore_robots_on_the_grid.jpg",
+    "license": "CC BY-SA 4.0",
+    "author": "Euku (Wikimedia Commons user)",
+    "width": 3500,
+    "height": 2625,
+    "recommended": true,
+    "notes": "The strongest 'fleet on one floor' image: many robots, each with a visible fleet number, which suits 'kept the fleet healthy'. Warm red tones sit well with the ember palette. 4:3, 2.2 MB; crop to 16:9 if needed. The small 'AutoStore' marks on the robots name the equipment maker, not a warehouse operator, so nothing points to the NDA client. Caveat: these are grid robots running on rails, not free-roaming AMRs. Credit line: 'Photo: Euku, CC BY-SA 4.0, via Wikimedia Commons'. Under SA, a cropped or edited version must also be released under CC BY-SA."
+  },
+  {
+    "file": "amr_fleet_factory_floor_still.jpg",
+    "kind": "photo",
+    "subject": "Numbered autonomous mobile robots (274, 279, 284, 286 ...) on a bright factory or cleanroom floor, with more robots and production tools behind them.",
+    "source_page": "https://www.pexels.com/video/automated-warehouse-with-robotics-in-action-32386624/",
+    "direct_url": "https://videos.pexels.com/video-files/32386624/13814676_2560_1440_100fps.mp4",
+    "license": "Pexels License (free for commercial use, no attribution required; don't resell unmodified or imply endorsement)",
+    "author": "Usman AbdulrasheedGambo (Pexels)",
+    "width": 2400,
+    "height": 1350,
+    "recommended": false,
+    "notes": "A frame at t=10.8 s from the Pexels clip, cropped to 16:9 so the event banners naming the manufacturer (a solar-cell maker, not a warehouse operator) are cut off. Only plain blue banner edges remain at the left and right. The location is a factory floor, not a warehouse, but the fleet numbering fits the story. It looks like real camera footage; nothing suggests AI generation. Keep this frame as the poster for the clip."
+  },
+  {
+    "file": "amr_fleet_factory_floor_11s_720p.mp4",
+    "kind": "video",
+    "subject": "11.3 s of a slow camera move across a floor of numbered autonomous mobile robots in a large, bright factory or cleanroom, with some robots moving.",
+    "source_page": "https://www.pexels.com/video/automated-warehouse-with-robotics-in-action-32386624/",
+    "direct_url": "https://videos.pexels.com/video-files/32386624/13814676_2560_1440_100fps.mp4",
+    "license": "Pexels License (free for commercial use, no attribution required)",
+    "author": "Usman AbdulrasheedGambo (Pexels)",
+    "width": 1280,
+    "height": 720,
+    "recommended": true,
+    "notes": "Re-encoded from the 2560x1440 100 fps source: H.264 High, yuv420p, 30 fps (frames dropped, so it plays at real time), CRF 23, no audio, +faststart, metadata stripped, 2.3 MB. Caveat: blue banners reading 'JIETAI TECHNOLOGY' (a solar-cell manufacturer) are readable in the middle of the clip. That brand is neither a warehouse operator nor the client, but if no branding at all can show, blur those banners or play only the last ~2 s (the still frame comes from there). Pexels' own title calls it a warehouse, but the room is a production floor."
+  }
+]

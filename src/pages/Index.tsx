@@ -1,6 +1,7 @@
 import Hero from '../components/Hero';
 import StickyIdentity from '../components/StickyIdentity';
 import HeroCanvas from '../components/HeroCanvas';
+import Thread from '../components/Thread';
 import Latest from '../components/Latest';
 import Journey from '../components/Journey';
 import Now from '../components/Now';
@@ -14,6 +15,7 @@ export default function Index() {
       <StickyIdentity />
       <main className="relative z-10">
         <Hero />
+        <Thread />
         <Latest />
         <Journey />
         <Now />

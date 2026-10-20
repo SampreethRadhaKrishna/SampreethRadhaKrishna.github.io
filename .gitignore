@@ -1,3 +1,10 @@
 .claude/
 node_modules/
 dist/
+# The Lavish review copy is a build output.
+.lavish/site/
+# Raw footage; the site uses the compressed copies in public/media/.
+/media/
+# Third-party originals stay local (several are not free to redistribute); manifests are kept.
+content/research-media/**/*.*
+!content/research-media/**/manifest.json

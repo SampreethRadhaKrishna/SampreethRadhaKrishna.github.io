@@ -1,12 +1,6 @@
 import { Github, Linkedin } from 'lucide-react';
-import { contact } from '../content/site';
-
-const LINKS = [
-  { href: '#open-droids', label: 'Open Droids' },
-  { href: '#journey', label: 'Journey' },
-  { href: '#now', label: 'Now' },
-  { href: '#contact', label: 'Contact' },
-];
+import PillLink from './PillLink';
+import { contact, hero, nav } from '../content/site';
 
 function Mark() {
   // Five nodes and their edges: the site's favicon, inline.
@@ -27,12 +21,12 @@ export default function Nav() {
     <header className="relative z-20 px-4 pt-5 md:px-6 md:pt-6">
       <nav className="liquid-glass mx-auto flex max-w-5xl items-center justify-between rounded-full px-4 py-2.5 md:px-6 md:py-3">
         <div className="flex items-center gap-6">
-          <a href="#top" className="flex items-center gap-2.5" aria-label="Sampreeth Radha Krishna, home">
+          <a href="#top" className="flex items-center gap-2.5" aria-label={`${hero.name}, ${nav.homeLabel}`}>
             <Mark />
-            <span className="font-mono text-[0.8rem] tracking-[0.06em] text-bone">SRK</span>
+            <span className="font-mono text-[0.8rem] tracking-[0.06em] text-bone">{nav.mark}</span>
           </a>
           <div className="hidden items-center gap-6 md:flex">
-            {LINKS.map((l) => (
+            {nav.links.map((l) => (
               <a key={l.href} href={l.href} className="hud text-ash transition-colors hover:text-bone">
                 {l.label}
               </a>
@@ -40,18 +34,15 @@ export default function Nav() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <a href={contact.github} className="rounded-full p-2 text-ash transition-colors hover:text-bone" aria-label="GitHub">
-            <Github size={18} />
+          <a href={contact.github} className="rounded-full p-2 text-ash transition-colors hover:text-bone" aria-label={nav.github}>
+            <Github size={18} aria-hidden="true" />
           </a>
-          <a href={contact.linkedin} className="rounded-full p-2 text-ash transition-colors hover:text-bone" aria-label="LinkedIn">
-            <Linkedin size={18} />
+          <a href={contact.linkedin} className="rounded-full p-2 text-ash transition-colors hover:text-bone" aria-label={nav.linkedin}>
+            <Linkedin size={18} aria-hidden="true" />
           </a>
-          <a
-            href={`mailto:${contact.email}`}
-            className="liquid-glass hud ml-1 rounded-full px-4 py-2 text-bone transition-colors hover:bg-white/5"
-          >
-            Email
-          </a>
+          <PillLink href={`mailto:${contact.email}`} className="ml-1">
+            {nav.email}
+          </PillLink>
         </div>
       </nav>
     </header>

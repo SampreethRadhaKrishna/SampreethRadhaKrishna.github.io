@@ -1,295 +1,315 @@
-// Generated from content/06-journey-narrative.md (draft 8) via .lavish/journey.html. Edit the source, not this file.
+// ALL site copy lives here. The prose is generated from content/06-journey-narrative.md (draft 8)
+// via .lavish/journey.html: change wording in the source first, then here. Components hold no strings.
 
 export type Link = { href: string; label: string };
 export type Figure = { src: string; alt: string };
-export type Chapter = { id: string; when: string; title: string; story: string[]; carried: string; figures: Figure[]; links: Link[] };
+// One journey stop: a one-line account, what it left me with, the organisation's logo, and pictures.
+// `credit` names the source of a picture that isn't mine; `illustrative` marks one that shows the
+// kind of thing, not the thing itself.
+export type Media = { src: string; alt: string; video?: boolean; credit?: Link; illustrative?: boolean };
+export type Chapter = { id: string; when: string; title: string; line: string; carried: string; logo?: Media; media: Media[]; links: Link[] };
+export type Arena = { label: string; body: string };
+// `contain` letterboxes a clip whose framing would be lost to a portrait crop.
+export type Clip = { src: string; poster: string; label: string; date?: string; contain?: boolean };
+export type Step = { label: string; body: string[] };
+export type Latest = {
+  id: string;
+  when: string;
+  name: string;
+  tagline: string;
+  summary: string;
+  facts: string[];
+  photo: Figure & { width: number; height: number };
+  storyHeading: string;
+  reelHeading: string;
+  reel: Clip[];
+  story: Step[];
+  carried: string;
+  arenasHeading: string;
+  pressHeading: string;
+  links: Link[];
+};
 
 export const hero = {
   name: "Sampreeth Radha Krishna",
   role: "Robotics Software Engineer",
-  line: "Working towards fully autonomous robots.",
+  // The headline, in the three parts the layout sets differently: lead small in ash,
+  // emphasis italic, emphasis + rest large in ember-soft. Reads as one sentence.
+  lead: "Working towards",
+  emphasis: "fully",
+  rest: "autonomous robots.",
   fact: "San Francisco. Previously Open Droids, Case Western, Accenture.",
+  // Accessible name for the pinned identity link: the visible name plus what the link does.
+  backToTop: "back to top",
 };
 
-export const thread = "Every robot I've built removed one more human from the loop. A fire robot that found the heat and put it out on its own. A car that steered around what it saw. An arm that keeps a fast-moving target in frame without being told where to look. A family of robots that run learned policies on their own compute. The direction has never changed. Only the scale has.";
+export const nav = {
+  mark: "SRK",
+  homeLabel: "home",
+  links: [
+    { href: "#open-droids", label: "Open Droids" },
+    { href: "#journey", label: "Journey" },
+    { href: "#now", label: "Now" },
+    { href: "#contact", label: "Contact" },
+  ] as Link[],
+  github: "GitHub",
+  linkedin: "LinkedIn",
+  email: "Email",
+};
 
-export const latest: Chapter = {
-  "id": "c10",
-  "when": "Nov 2024 – Sep 2026",
-  "title": "Open Droids: robots for good, robots that stay yours",
-  "story": [
-    "In November 2024 I joined Open Droids in San Francisco. For the next two years I owned the software across the whole fleet: Droid 1, R1D1, R1D2, R1D3 and R2D3, the dual-arm platform we unveiled at CES 2025 and again at CES 2026.",
-    "The company had a founding idea, and I signed on to make it real. Two words: good, and open. Good meant robots that take the work nobody wants, so people can do the work that matters. Open meant something more specific than a license. A robot that lives in your home or your hospital runs on code you can read, and nobody on the other side of the world can reach in, switch it off, put it under curfew, or make it do something worse. If you can't see what your robot runs, it isn't your robot. Every decision on the software side had to hold that line.",
-    "We started at home. R2D3 folding laundry, loading a dishwasher, clearing a table: the chores that eat an evening. Two arms, a mobile base, and a camera that finds the sock before the hand goes for it. The videos are on the Open Droids site.",
-    "Then healthcare. Picture a nurse's night shift: the restocking, the fetching, the rounds that are nothing but carrying. We built a robot that works as a semi-nurse, an interactive assistant that takes the unwanted chores, including the ones at three in the morning, so the people on the floor can spend their time on patients. That work is under NDA, so there are no pictures here.",
-    "Then industry, where the same platform became different robots: industrial cleaning, bin picking on a line, agricultural work in the field. One software foundation, different hands, different job.",
-    "And hotels, where a robot can run a facility end to end: check a guest in, deliver towels or a late dinner to a room, restock, patrol the corridors, and dock itself to charge.",
-    "Under all of it sat the work I owned. One software stack every robot in the family could run, so a fix landed everywhere at once. A simulator, so the team could build without waiting on hardware. Two-arm control safe enough to hand to a learned policy. And modern vision-language models running on the robot's own computer, not in a cloud someone else controls. That last one is the open promise again, in engineering form.",
-    "It also meant handing R2D3 to a hackathon team on a Friday and watching them teach it latte art by Sunday, then releasing the data, the model and the code."
+// Labels drawn beside the two brains in the fixed scene (rendered by HeroCanvas).
+export const heroLabels = { human: "human brain", robot: "robot brain" };
+
+export const journeyIntro = {
+  eyebrow: "How I got here",
+  carriedLabel: "Took away",
+  illustrative: "Illustrative",
+  creditsHeading: "Picture credits",
+  // Closing line of the last chapter; `link` is rendered as an anchor between `before` and `after`.
+  bridge: { before: "Which is what brought me to", link: { href: "#open-droids", label: "Open Droids" }, after: ", at the top of this page." },
+};
+
+export const thread = "Every robot I've built removed human effort and helped humans. A fire robot that found the heat and put it out on its own. A car that steered around what it saw. An arm that keeps a fast-moving target in frame without being told where to look. A family of robots that run learned policies on their own compute to do home chores. The direction has never changed. Only the scale has.";
+
+export const latest: Latest = {
+  id: "c10",
+  when: "Nov 2024 – Sep 2026 · San Francisco",
+  name: "Open Droids",
+  tagline: "Robots for good. Robots that stay yours.",
+  summary: "Two years owning the software for a family of robots.",
+  facts: ["All robots, one stack", "R2D3 at CES 2025 + 2026", "Models on the robot, not the cloud"],
+  photo: {
+    src: "/images/open_droids_main.jpg",
+    alt: "Sampreeth at a laptop beside the arms of an Open Droids robot",
+    width: 1200,
+    height: 1600,
+  },
+  storyHeading: "The story",
+  reelHeading: "From the floor",
+  reel: [
+    { src: "/media/open_droids/booth.mp4", poster: "/media/open_droids/booth.jpg", label: "With R2D3 at the booth" },
+    { src: "/media/open_droids/hand.mp4", poster: "/media/open_droids/hand.jpg", label: "Dexterous hand", date: "Mar 2026" },
+    { src: "/media/open_droids/glove.mp4", poster: "/media/open_droids/glove.jpg", label: "Glove teleop, mirrored in sim", date: "Mar 2026" },
+    { src: "/media/open_droids/teleop.mp4", poster: "/media/open_droids/teleop.jpg", label: "Beat 1X", date: "Nov 2025", contain: true },
+    { src: "/media/open_droids/dishwasher.mp4", poster: "/media/open_droids/dishwasher.jpg", label: "Unloading a dishwasher", date: "Mar 2025" },
+    { src: "/media/open_droids/hackathon.mp4", poster: "/media/open_droids/hackathon.jpg", label: "The hackathon", date: "Jan 2026" },
+    { src: "/media/open_droids/mobile.mp4", poster: "/media/open_droids/mobile.jpg", label: "Droid 1" },
   ],
-  "carried": "Robots that do good, that stay yours, and that run learned policies on their own compute with no one steering. The closest I'd been to the thing I've wanted since sixth grade.",
-  "figures": [
+  story: [
     {
-      "src": "/images/r2d3.png",
-      "alt": "R2D3"
-    }
+      label: "Took on the whole fleet",
+      body: [
+        "I owned the software for all our robots: R1D1, R1D2, R1D3 and R2D3.",
+      ],
+    },
+    {
+      label: "Built Rogent, one stack for all of them",
+      body: [
+        "I built Rogent, the software stack every robot in the family runs: a multi-agent orchestration system built, at its core, for fully autonomous tasks.",
+        "A fix lands on every robot at once.",
+        "The same foundation carried the platform from the home into healthcare, industry and hotels.",
+      ],
+    },
+    {
+      label: "Put the robot in simulation",
+      body: [
+        "I built a full simulation of the dual-arm robot that anyone can develop on and run in their browser, without an $80k machine on their desk.",
+      ],
+    },
+    {
+      label: "Made two arms safe for learned policies",
+      body: [
+        "I wrote two-arm control that a learned policy can drive safely: it refuses any command that would hit a joint limit or an unreachable pose.",
+      ],
+    },
+    {
+      label: "Beat 1X",
+      body: [
+        "Same dishes benchmark, side by side with 1X. Their run took 7 minutes. I teleoperated ours through it in 3:09.",
+      ],
+    },
+    {
+      label: "Optimized models to run on device",
+      body: [
+        "I optimized open-source models to run on the robot's own computer, with control models and policies running at high frequency.",
+      ],
+    },
+    {
+      label: "Put it to work at home",
+      body: [
+        "The stack ran R2D3 through the chores that eat an evening: loading a dishwasher, loading a washing machine, clearing a table.",
+      ],
+    },
+    {
+      label: "Handed it to a hackathon",
+      body: [
+        "I handed R2D3 and R1D2 to a hackathon team on a Friday. By Sunday they were making latte art, and we released the data, the model and the code.",
+      ],
+    },
   ],
-  "links": [
-    {
-      "href": "https://www.opendroids.com/",
-      "label": "opendroids.com (home-chore videos)"
-    },
-    {
-      "href": "https://www.youtube.com/@opendroids",
-      "label": "Open Droids on YouTube"
-    },
-    {
-      "href": "https://github.com/Open-Droids-robot/R2D3_ros2",
-      "label": "R2D3_ros2"
-    },
-    {
-      "href": "https://github.com/Open-Droids-robot/od-arm-controllers",
-      "label": "od-arm-controllers"
-    },
-    {
-      "href": "https://github.com/Open-Droids-robot/X-VLA",
-      "label": "X-VLA"
-    },
-    {
-      "href": "https://github.com/Open-Droids-robot/X-VLA/commit/6d17980",
-      "label": "tuned-for-r2d3 commit"
-    },
-    {
-      "href": "https://github.com/Open-Droids-robot/R2D3_ros2/blob/main/simulation_quickstart.md",
-      "label": "simulation quickstart"
-    },
-    {
-      "href": "https://github.com/Open-Droids-robot/R2D3_ros2/blob/main/woosh_robot_ros_interface_dev_notes.md",
-      "label": "Woosh interface notes"
-    },
-    {
-      "href": "https://github.com/Open-Droids-robot",
-      "label": "Open Droids org"
-    },
-    {
-      "href": "https://www.opendroids.com/team",
-      "label": "opendroids.com/team"
-    }
-  ]
+  carried: "Robots that do good, that stay yours, and that run learned policies on their own compute with no one steering. The closest I'd been to the thing I've wanted since sixth grade.",
+  arenasHeading: "Where it went",
+  pressHeading: "In the press and on X",
+  links: [
+    { href: "https://www.opendroids.com/", label: "opendroids.com" },
+    { href: "https://www.youtube.com/@opendroids", label: "YouTube" },
+  ],
 };
 
 export const journey: Chapter[] = [
   {
-    "id": "c1",
-    "when": "~2010",
-    "title": "The first robot",
-    "story": [
-      "In sixth grade I built a line-following robot. It worked, and it worked well, which surprised everyone including me. A couple of sensors, a few lines of logic, and a machine that turned left or right because of what it saw on the floor. That was the first time I understood that a robot could make a decision from an observation, and that the decision was something I could write."
+    id: "c1",
+    when: "~2010",
+    title: "The first robot",
+    line: "In sixth grade I built a line-follower that turned left or right because of what it saw on the floor. The first decision I ever wrote.",
+    carried: "A machine can decide from what it observes.",
+    media: [
+      {"src": "/images/journey/line_follower_nxt.jpg", "alt": "A 2011 LEGO line follower", "credit": {"href": "https://commons.wikimedia.org/wiki/File:40365_Line_Follower_Robot.jpg", "label": "chauromano, CC BY 2.0"}, "illustrative": true},
     ],
-    "carried": "Logic, algorithms, and the idea that a machine can decide from what it observes.",
-    "figures": [],
-    "links": []
+    links: [],
   },
   {
-    "id": "c2",
-    "when": "2016–2018",
-    "title": "Autonomous, or nothing",
-    "story": [
-      "In the early years of my mechanical engineering degree I built two robots that didn't need a driver. The first was a fire-fighting robot: temperature sensors to detect a heat source, a drive system to navigate to it, and a pump to spray water on it. Detect, move, act, with no one in the loop.",
-      "The second was a collision-avoidance robot: a car that watched its surroundings with ultrasonic sensors and a camera, steered and braked around obstacles on its own, and carried an external airbag as a last line of defense for the crashes it couldn't avoid. Different problems, same shape. The machine sees something, decides, and moves."
+    id: "c2",
+    when: "2016–2018",
+    title: "Autonomous, or nothing",
+    line: "A fire-fighting robot that found the heat and sprayed it out. A car that steered and braked around obstacles, with an airbag for the crashes it couldn't avoid.",
+    carried: "Sense, decide, act. Everything since is that loop, bigger.",
+    media: [
+      {"src": "/images/p41.png", "alt": "Fire detection on a real flame"},
+      {"src": "/images/p32.png", "alt": "External airbag deploying on impact, simulation"},
     ],
-    "carried": "Perception plus a decision plus an actuator is a robot. Everything since has been that loop, bigger.",
-    "figures": [
-      {
-        "src": "/images/p41.png",
-        "alt": "Fire detection on a real flame, from the later rebuild"
-      },
-      {
-        "src": "/images/p32.png",
-        "alt": "External airbag deploying on impact, simulation"
-      }
+    links: [
+      { href: "https://github.com/Sampreeth98/ROS2-Projects", label: "ROS2-Projects" },
     ],
-    "links": [
-      {
-        "href": "https://github.com/Sampreeth98/ROS2-Projects",
-        "label": "github.com/Sampreeth98/ROS2-Projects"
-      }
-    ]
   },
   {
-    "id": "c3",
-    "when": "2017",
-    "title": "Hindustan Aeronautics Limited",
-    "story": [
-      "My first time inside a real engineering organization was at Hindustan Aeronautics Limited, India's aircraft manufacturer, as an intern working across the Tejas and Rafale programs from design through the manufacturing line, and on Airbus aircraft doors. Robots had been a passion. This was production: thousands of parts, every one traceable, every process signed off, at a scale where \"it works on my bench\" means nothing. I learned the difference between building something once and building it so it can be built again, a thousand times, identically."
+    id: "c3",
+    when: "2017",
+    title: "Hindustan Aeronautics",
+    line: "Intern on the Tejas and Rafale programs and on Airbus aircraft doors, from design through the manufacturing line.",
+    carried: "Build it so it can be built a thousand times, identically.",
+    logo: {"src": "/images/journey/logo_hal.svg", "alt": "Hindustan Aeronautics Limited"},
+    media: [
+      {"src": "/images/journey/hal_tejas_build.jpg", "alt": "Tejas trainer on the HAL Bangalore assembly floor", "credit": {"href": "https://commons.wikimedia.org/wiki/File:HAL_Tejas_trainer_version_construction.JPG", "label": "Ajai Shukla, CC BY 2.5 IN"}},
+      {"src": "/media/journey/tejas_refuel.mp4", "alt": "Tejas, first air-to-air refuelling", "video": true, "credit": {"href": "https://commons.wikimedia.org/wiki/File:LCA_Tejas_maiden_air-to-air_refuelling.ogv", "label": "Ministry of Defence, GODL-India"}},
+      {"src": "/images/journey/hal_tejas_pair.jpg", "alt": "Two HAL Tejas in formation", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Two_HAL_Tejas_flying_in_formation.jpg", "label": "Indian Air Force, GODL-India"}},
     ],
-    "carried": "The gap between passion and production. Process, traceability, and respect for scale.",
-    "figures": [],
-    "links": []
+    links: [],
   },
   {
-    "id": "c4",
-    "when": "2017–2019",
-    "title": "Hackathons",
-    "story": [
-      "Through college I entered most of the hackathons I could reach around Bangalore. Thirty-six to forty-eight hours, an immense amount of coffee, builds that were rough and demos that mostly worked. What I learned is how much a small team can ship in two days when nobody is waiting for permission, and that I liked being the person who makes the demo work at 3 a.m."
+    id: "c4",
+    when: "2017–2019",
+    title: "Hackathons",
+    line: "Most of the hackathons I could reach around Bangalore. Thirty-six to forty-eight hours, a lot of coffee, demos that mostly worked.",
+    carried: "How much a small team ships when nobody waits for permission.",
+    media: [
+      {"src": "/images/journey/hackathon_hardware.jpg", "alt": "Building hardware at a hackathon", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Hackathon_1_%22Arduino%22_-_Foto_T%C3%A1rlis_Schneider_(19372442659).jpg", "label": "Tárlis Schneider, CC BY-SA 2.0"}, "illustrative": true},
     ],
-    "carried": "Speed, and comfort with unfinished things in front of an audience.",
-    "figures": [],
-    "links": []
+    links: [],
   },
   {
-    "id": "c5",
-    "when": "2018–2019",
-    "title": "The solar car",
-    "story": [
-      "In my third year I joined Team Dritan Racers: thirty students building an electric solar vehicle from scratch for the ISIE Electric Solar Vehicle Championship 2019. I was on the design and autonomy team, where we built the sensor data processing pipelines that assisted the driver. Chassis, composite body, solar array, drivetrain, electrics: nothing off the shelf. Everything was drawn, fabricated and tested by students on a deadline and a budget that left no room for a second attempt. The championship ends in an endurance race, so the car didn't just have to pass inspection. It had to keep running.",
-      "It was the first thing I built that was big enough to hurt someone, on a team big enough that nobody could hold the whole car in their head."
+    id: "c5",
+    when: "2018–2019",
+    title: "The solar car",
+    line: "Team Dritan Racers: thirty students building an electric solar car from scratch for ESVC 2019. I was on design and autonomy, building the sensor pipelines that assisted the driver.",
+    carried: "Systems thinking across mechanical, electrical and software.",
+    logo: {"src": "/images/journey/logo_dritan.png", "alt": "Team Dritan Racers"},
+    media: [
+      {"src": "/media/journey/solar_build.mp4", "alt": "Fitting the body and solar panels, 2019", "video": true, "credit": {"href": "https://www.youtube.com/watch?v=rTtckKDNej4", "label": "ISIEINDIA on YouTube"}},
+      {"src": "/images/journey/solar_team.jpg", "alt": "The team with the car", "credit": {"href": "https://www.youtube.com/watch?v=rTtckKDNej4", "label": "ISIEINDIA on YouTube"}},
     ],
-    "carried": "Systems thinking across mechanical, electrical and software, and what it takes to move thirty people toward one car.",
-    "figures": [
-      {
-        "src": "/images/solar_thumb.jpg",
-        "alt": "Team Dritan Racers, ESVC 2019"
-      }
+    links: [
+      { href: "https://www.youtube.com/watch?v=rTtckKDNej4", label: "Dritan Racers on YouTube" },
     ],
-    "links": [
-      {
-        "href": "https://www.youtube.com/watch?v=rTtckKDNej4",
-        "label": "ESVC19-A-52 Dritan Racers (YouTube)"
-      }
-    ]
   },
   {
-    "id": "c6",
-    "when": "Summer 2019",
-    "title": "Bosch Rexroth: the machines that never sleep",
-    "story": [
-      "At Bosch Rexroth I spent a summer with the actuators robots are built from: robotic arms, industrial pneumatics and hydraulics, and the PLCs that run them. Industrial automation is autonomy's older sibling: reliable, repetitive, and completely blind. The cells I programmed would run for years without a mistake, and never once perceive anything. I wanted the reliability without the blindness."
+    id: "c6",
+    when: "Summer 2019",
+    title: "Bosch Rexroth",
+    line: "Robotic arms, pneumatics, hydraulics and the PLCs that run them. Cells that run for years without a mistake, and never see anything.",
+    carried: "Automated is not autonomous.",
+    logo: {"src": "/images/journey/logo_bosch_rexroth.svg", "alt": "Bosch Rexroth"},
+    media: [
+      {"src": "/images/journey/rexroth_pumps_bangalore.jpg", "alt": "Rexroth hydraulic pumps, Bangalore", "credit": {"href": "https://commons.wikimedia.org/wiki/File:EXCON_2025,_Bangalore_International_Exhibition_Centre_(514).jpg", "label": "Gpkp, CC BY-SA 4.0"}},
+      {"src": "/images/journey/automation_line.jpg", "alt": "A robotic line with pneumatic grippers", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Linia_zrobotyzowana_w_AIUT.png", "label": "Marta Veverica, CC BY-SA 4.0"}, "illustrative": true},
+      {"src": "/images/journey/automation_welding.jpg", "alt": "Industrial robots on a body line", "credit": {"href": "https://commons.wikimedia.org/wiki/File:BMW_Leipzig_MEDIA_050719_Download_Karosseriebau_max.jpg", "label": "BMW Werk Leipzig, CC BY-SA 2.0 DE"}, "illustrative": true},
     ],
-    "carried": "Respect for actuators and control loops that have to run for years. And the gap between \"automated\" and \"autonomous\" as the thing I'd spend my career on.",
-    "figures": [],
-    "links": []
+    links: [],
   },
   {
-    "id": "c7",
-    "when": "2020–2023",
-    "title": "Accenture: two hundred robots at once",
-    "story": [
-      "I graduated into 2020 and spent almost three years at Accenture as a software engineer on a warehouse robotics client. Picture two hundred robots on one floor, each with a different job and a different application behind it, all streaming sensor data. My work was keeping that fleet healthy: processing the sensor data at scale, running the cloud infrastructure on AWS that stored it and managed the instances the systems ran on, maintaining the processing algorithms, catching the robots that drifted, and improving the system so they drifted less.",
-      "Robotics from the operations side. The unit isn't one robot, it's a fleet, and the enemy isn't a bug, it's downtime."
+    id: "c7",
+    when: "2020–2023",
+    title: "Accenture",
+    line: "Software engineer on a warehouse robotics client: two hundred robots on one floor. I kept the fleet healthy, from sensor data at scale to the AWS infrastructure under it.",
+    carried: "Fleet thinking. The enemy isn't a bug, it's downtime.",
+    media: [
+      {"src": "/images/journey/factory_glass.jpg", "alt": "Robotic arms unloading glass sheets on a factory line", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Float_Glass_Unloading.jpg", "label": "ICAPlants, CC BY-SA 3.0"}, "illustrative": true},
+      {"src": "/images/journey/factory_palletizing.jpg", "alt": "Robotic arms palletizing crates on a factory floor", "credit": {"href": "https://commons.wikimedia.org/wiki/File:Factory_Automation_Robotics_Palettizing_Bread.jpg", "label": "KUKA Roboter GmbH, public domain"}, "illustrative": true},
     ],
-    "carried": "Fleet thinking. Infrastructure, monitoring, and code that other people depend on.",
-    "figures": [],
-    "links": []
+    links: [],
   },
   {
-    "id": "c8",
-    "when": "2023–2024",
-    "title": "Case Western: the intelligence layer",
-    "story": [
-      "I went to Case Western Reserve for a master's in mechanical engineering focused on AI/ML and robotics, and worked between two labs. Roger Quinn's Biorobotics Lab, where the current work is soft robotic graspers: polymer grippers that pick up things a parallel-jaw gripper never could. And Kathryn Daltorio's Crab Lab, which builds crab-inspired legged robots that walk and swim underwater to find and recover things no diver should have to. Mechanical had given me the body. Accenture had given me the fleet. This was the brain and, it turned out, the hands and the legs."
+    id: "c8",
+    when: "2023–2024",
+    title: "Case Western",
+    line: "Master of Science in AI/ML and Robotics. Bio-inspired and soft robotics in Roger Quinn's Biorobotics Lab, including soft robotic graspers.",
+    carried: "The full stack: hardware, software and learning.",
+    logo: {"src": "/images/journey/logo_cwru.svg", "alt": "Case Western Reserve University"},
+    media: [
+      {"src": "/images/journey/cwru_softworm.jpg", "alt": "A soft, worm-inspired robot from the Biorobotics Lab", "credit": {"href": "https://www.youtube.com/watch?v=lizfM1ZqiAI", "label": "CWRU on YouTube"}},
+      {"src": "/images/journey/cwru_crab.jpg", "alt": "A crab-inspired legged robot", "credit": {"href": "https://case.edu/think/spring2024/wild-ideas.html", "label": "Jianfeng Zhou, CWRU Think"}},
+      {"src": "/media/journey/cwru_crab.mp4", "alt": "Crab-inspired robots on land and underwater", "video": true, "credit": {"href": "https://www.youtube.com/watch?v=csZAN4yw_aU", "label": "Veale Institute, CWRU"}},
+      {"src": "/media/pick_place.mp4", "alt": "Pick and place, simulated", "video": true},
     ],
-    "carried": "The full stack, finally. Hardware, software, learning, and a wider idea of what a robot can be.",
-    "figures": [],
-    "links": [
-      {
-        "href": "https://github.com/Sampreeth98",
-        "label": "github.com/Sampreeth98"
-      }
-    ]
+    links: [
+      { href: "https://github.com/Sampreeth98", label: "github.com/Sampreeth98" },
+    ],
   },
   {
-    "id": "c9",
-    "when": "2024",
-    "title": "The arm that follows what it sees",
-    "story": [
-      "The project that pulled it together: a 5-DOF arm with a depth camera on its wrist, built to follow fast-moving objects. YOLO finds the target in every frame, but detection is the easy half. The hard half is motion: a neural network trained to turn a high-frequency stream of target positions into a smooth, clean trajectory instead of a jittery chase, with reinforcement learning to improve it over time. Simulated in Isaac Sim and Gazebo, run on a Raspberry Pi.",
-      "Nothing like the fire robot. That one found a heat source that stayed put. This one had to keep a fast-moving target in frame at high frequency: built with Formula 1 in mind, and with an eye on the harder version of the problem, tracking and intercepting drones."
+    id: "c9",
+    when: "2024",
+    title: "High speed object following arm",
+    line: "A 5-DOF arm with a depth camera on its wrist. YOLO finds the target, and a trained network turns it into smooth motion at high frequency. Simulated in Isaac Sim and Gazebo, run on a Raspberry Pi.",
+    carried: "Perception to motion, in a closed loop, fast.",
+    media: [
+      {"src": "/images/p11.png", "alt": "The arm, CAD render"},
+      {"src": "/media/journey/arm_cam.mp4", "alt": "The arm tracking its target from the wrist camera", "video": true},
     ],
-    "carried": "Closed-loop perception-to-motion at high frequency as the unit of work.",
-    "figures": [
-      {
-        "src": "/images/p11.png",
-        "alt": "The arm, CAD render"
-      },
-      {
-        "src": "/images/p22.png",
-        "alt": "Shape classification from the wrist camera"
-      }
+    links: [
+      { href: "https://github.com/Sampreeth98/ROS2-Projects", label: "ROS2-Projects" },
     ],
-    "links": [
-      {
-        "href": "https://github.com/Sampreeth98/ROS2-Projects",
-        "label": "github.com/Sampreeth98/ROS2-Projects"
-      }
-    ]
-  }
+  },
 ];
 
-export const arenas: string[] = [
-  "Home: laundry, dishwashing, tidying. Videos on opendroids.com.",
-  "Healthcare: semi-nurse / interactive nurse assistant for unwanted chores, overnight included. NDA: no images.",
-  "Industry: industrial cleaning, bin picking, agricultural robots.",
-  "Hotels: whole-facility operation: guest check-in, deliveries (food, towels, items).",
-  "Vision: robots for good; robots kept open so no one anywhere can remotely control, curfew, or misuse them. The company's founding vision, and what you worked toward."
+// The four arenas of the Open Droids work, in the order the story tells them.
+export const arenas: Arena[] = [
+  { label: "Home", body: "Laundry, dishwashers, clearing the table." },
+  { label: "Healthcare", body: "A semi-nurse for the 3 a.m. chores." },
+  { label: "Industry", body: "Cleaning, bin picking, work in the field." },
+  { label: "Hotels", body: "Check-in, room deliveries, patrols, self-docking." },
 ];
 
-export const made: string[] = [
-  "One software foundation for the whole robot family.",
-  "A full simulation of the dual-arm robot, so anyone can develop without a $60k machine on their desk.",
-  "Two-arm control that a learned policy can drive safely: it refuses commands that would hit a joint limit or an unreachable pose.",
-  "A vision-language-action model running on the robot's own computer, not in the cloud.",
-  "Hackathon teams turning R2D3 into a latte-art robot in a weekend, with data, model and code released openly."
+// Each item quotes its source verbatim (a headline or a line from the piece); the ticker links to it.
+// `title` stands in, unquoted, where the source text can't be read without a login.
+export type Press = { href: string; source: string; quote?: string; title?: string };
+
+export const press: Press[] = [
+  { href: "https://www.therobotreport.com/open-droids-develops-both-single-dual-arm-mobile-manipulators/", source: "The Robot Report", quote: "The company is on a fast track to bring these solutions to market." },
+  { href: "https://mashable.com/article/ces-unveiled-2025-open-droids-r2d3-domestic-robot", source: "Mashable", quote: "OpenDroids' R2D3 domestic robot is 'Roomba on crack'" },
+  { href: "https://x.com/mashable/status/1876192056114032966", source: "Mashable on X", quote: "OpenDroids wants to chart a course in how we use robots for domestic tasks." },
+  { href: "https://x.com/TechCrunch/status/1876761274979070059", source: "TechCrunch on X", quote: "OpenDroids' R2D3 dual-arm robot aims to handle a ton of household chores." },
+  { href: "https://www.youtube.com/watch?v=Zld8HilE8RI", source: "CES 2025 walkthrough", quote: "R2-D3 & R1D1 Open-Source Robots for Home & Hospitality" },
+  { href: "https://www.roboticgizmos.com/opendroids-r2d3/", source: "Robotic Gizmos", quote: "OpenDroids R2D3 Modular Open Source Dual Arm Robot" },
+  { href: "https://x.com/evan_wineland/status/1878920872616239218", source: "Evan Wineland on X", quote: "It's good to see more companies building non-wheeled, general-purpose platforms like @opendroids_" },
+  { href: "https://aiforgood.itu.int/speaker/r2d3/", source: "ITU AI for Good", quote: "Built on an open-source platform, our robots are highly customizable." },
+  { href: "https://x.com/OpenDroids/status/1990947763853631524", source: "Open Droids on X", quote: "Twice the speed, 99.9% less funding... @OpenDroids wins" },
+  { href: "https://x.com/OpenDroids/status/1990949159910912138", source: "Open Droids on X", quote: "We welcome other challengers to the new dishes benchmark." },
+  { href: "https://x.com/Scobleizer/status/1991054552381169733", source: "Robert Scoble on X", quote: "Robot wars." },
+  { href: "https://luma.com/8ca2z1rr", source: "Physical AI Hack 2026", quote: "Real robots on site, including Unitree G1, Open Droid R1D2/R2D3" },
+  { href: "https://www.linkedin.com/feed/update/urn:li:activity:7423378253114974208/", source: "Dhruv Diddi on LinkedIn", title: "The hackathon, January 2026" },
 ];
 
-export const press: Link[] = [
-  {
-    "href": "https://www.therobotreport.com/open-droids-develops-both-single-dual-arm-mobile-manipulators/",
-    "label": "The Robot Report, Dec 2024"
-  },
-  {
-    "href": "https://tech.yahoo.com/general/articles/ces-unveiled-2025-opendroids-r2d3-042543404.html",
-    "label": "Yahoo Tech, CES Unveiled 2025"
-  },
-  {
-    "href": "https://x.com/TechCrunch/status/1876761274979070059",
-    "label": "TechCrunch on X"
-  },
-  {
-    "href": "https://aiforgood.itu.int/speaker/r2d3/",
-    "label": "ITU AI for Good 2025"
-  },
-  {
-    "href": "https://luma.com/8ca2z1rr",
-    "label": "Physical AI Hack 2026"
-  },
-  {
-    "href": "https://www.youtube.com/watch?v=Zld8HilE8RI",
-    "label": "CES 2025 walkthrough"
-  }
-];
-
-export const now = { story: "I've spent sixteen years closing the loop between what a robot sees and what it does. At Open Droids I got to close it on robots people actually buy. Now I'm building a new way to understand manipulation for robotics. That's all I'll say about it for now.", mission: "I'm here to make robots fully autonomous. I'm not stopping before that." };
-
-export const beliefs: { title: string; body: string }[] = [
-  {
-    "title": "Automated is not autonomous.",
-    "body": "A PLC cell runs for ten years and never sees anything. The interesting problems start when the robot has to perceive."
-  },
-  {
-    "title": "The loop is the product.",
-    "body": "Perception, decision, actuation. Every impressive robot is that loop running fast and reliably; every disappointing one is that loop broken somewhere."
-  },
-  {
-    "title": "Robots should ship open.",
-    "body": "Open hardware and open stacks attract the people who make them better."
-  },
-  {
-    "title": "Demos are easy. Tuesday is hard.",
-    "body": "The difference between a video and a product is whether it still works when the founder isn't in the room."
-  }
-];
+export const now = { eyebrow: "Now", story: "Sixteen years of closing the loop between what a robot sees and what it does. Now I'm building a new way to understand manipulation for robotics. That's all I'll say for now.", mission: "I'm here to make robots fully autonomous. I'm not stopping until then!" };
 
 export const contact = {
   line: "Building toward autonomous robots, or funding people who are? Let's talk.",
@@ -297,4 +317,12 @@ export const contact = {
   linkedin: "https://www.linkedin.com/in/sampreethradhakrishna/",
   github: "https://github.com/SampreethRadhaKrishna",
   githubOld: "https://github.com/Sampreeth98",
+  linkedinLabel: "LinkedIn",
+  githubLabel: "GitHub",
+  githubOldLabel: "older projects",
+};
+
+export const footer = {
+  left: "Sampreeth Radha Krishna · San Francisco",
+  right: "30,000 particles, in transit behind every line of this page.",
 };

@@ -34,3 +34,16 @@ Same content and order as draft 8 (Open Droids first, journey, now, beliefs, con
 ## Out of scope
 
 Particle portrait. Any purple. Cycling states or morph readouts.
+
+## Amendments (2026-09-17 to 2026-09-18)
+
+Later decisions by the owner. Where they conflict with the body above, these win. `CLAUDE.md` describes the current state in full.
+
+- Telemetry card: removed. No live counts or frame-rate readout anywhere; do not bring it back.
+- Type: Inknut Antiqua for display, Inconsolata for prose, JetBrains Mono for small labels only. Instrument Serif is gone (BioRhyme was also tried for prose and rejected).
+- Pointer: a black hole rather than a repulsion. Shadow disc, photon ring, a short edge-on accretion line tilted 15 degrees, far side lensed into arcs, tight reach. Mouse and pen only.
+- Robot brain motion: the board sways gently on two axes rather than holding a fixed tilt.
+- Chip: enlarged, with a revolving five-layer ring-and-column neural core inside it, built from the same particles.
+- Board depth: a faint underside copy, raised pads, a slab edge and a proud chip. The traces stay on a single crisp layer; spreading them across depth layers blurred the lines and was rejected.
+- Scroll: the canvas is fixed behind the whole page. The brains glide into the margins, the stream fans out to fill the viewport, and the backlight glows follow the brains. Brightness is never dimmed behind text.
+- Pinned identity: once the hero scrolls away, a compact name, role and headline block pins to the top-left. No location line, no border.

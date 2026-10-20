@@ -1,8 +1,12 @@
+# Publishes the site to https://sampreeth98.github.io/.
+# Repo settings -> Pages -> Source must be "GitHub Actions" (not "Deploy from a branch").
+# Only `test` (the default, working branch) publishes on push. There is one live site,
+# so a second deploying branch would overwrite it with whichever was pushed last.
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, test]
+    branches: [test]
   workflow_dispatch:
 
 permissions:
@@ -12,7 +16,8 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # Let a running deploy finish; a newer push queues behind it.
+  cancel-in-progress: false
 
 jobs:
   build:

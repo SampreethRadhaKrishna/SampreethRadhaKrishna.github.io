@@ -1,0 +1,50 @@
+[
+  {
+    "file": "float-glass-unloading-abb.jpg",
+    "subject": "Five ABB arms with vacuum grippers unloading float glass from a long roller conveyor in a factory hall; wide, symmetrical, no people",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Float_Glass_Unloading.jpg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Float_Glass_Unloading.jpg",
+    "license": "CC BY-SA 3.0",
+    "author": "ICAPlants",
+    "width": 2400,
+    "height": 1800,
+    "recommended": true,
+    "notes": "Best pick. Original 3072x2304 (4:3), resized to 2400. Crops well to 16:9 or wider. Only branding is ABB on the robots (maker, not operator). Credit: 'ICAPlants, CC BY-SA 3.0, via Wikimedia Commons'."
+  },
+  {
+    "file": "bread-palletizing-kuka.jpg",
+    "subject": "Four KUKA palletizing arms stacking bread crates at a German bakery distribution floor, elevated wide view",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Factory_Automation_Robotics_Palettizing_Bread.jpg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Factory_Automation_Robotics_Palettizing_Bread.jpg",
+    "license": "Public domain",
+    "author": "KUKA Roboter GmbH, Bachmann",
+    "width": 2400,
+    "height": 1800,
+    "recommended": true,
+    "notes": "Original 3417x2563, resized to 2400. Sharp, warm orange palette that matches the site's ember accent. KUKA lettering on the arms (robot maker); small product labels on bread bags are not legible at page size. No credit required, but courtesy credit suggested."
+  },
+  {
+    "file": "corepackage-assembly-abb.jpg",
+    "subject": "Several ABB arms in a foundry core-package assembly cell",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Corepackage_assembly.jpg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Corepackage_assembly.jpg",
+    "license": "CC BY-SA 3.0",
+    "author": "Laempe",
+    "width": 2400,
+    "height": 1606,
+    "recommended": false,
+    "notes": "Alternate. Busier, a 'Laempe' machine label visible bottom left."
+  },
+  {
+    "file": "3sun-solar-line.jpg",
+    "subject": "Automated solar-module production line at 3Sun Gigafactory, Catania; long caged line with small orange arms",
+    "source_page": "https://commons.wikimedia.org/wiki/File:3SUN-Gigafactory-Catania-automated-production-line.jpg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/3SUN-Gigafactory-Catania-automated-production-line.jpg",
+    "license": "CC BY-SA 4.0",
+    "author": "Ottaluc",
+    "width": 2400,
+    "height": 1350,
+    "recommended": false,
+    "notes": "Alternate. Wide 16:9 but the arms are small in frame; reads more as conveyor line than robots."
+  }
+]

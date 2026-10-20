@@ -59,7 +59,12 @@
     pointer-events: none;
   }
 
-  /* Mono readout text: years, nav, telemetry. */
+  /* The heading of a section or sub-section: display face, large, ember. */
+  .section-heading {
+    @apply font-display text-2xl leading-tight text-ember-soft md:text-[2.4rem];
+  }
+
+  /* Small mono label text: years, nav, section markers, the brain labels. */
   .hud {
     @apply font-mono text-[0.72rem] tracking-[0.08em] text-ash-dim;
   }
